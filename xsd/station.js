@@ -3,13 +3,10 @@
 const api = require('request.js')
 const sync = require('../utils/sync')
 
-const login = (accessCode, userinfo) => {
-	const code = 'station-test' // 测试用
-    return api.post('station/login', {code, userinfo}).then(data=>{
-    	sync.setEntity('auth', data.user)
-    	//sync.setEntity('station', data.station)
-    	return data.user
-    })
+const login = (user) => {
+	sync.setEntity('auth', user)
+	wx.navigateTo({url:'/pages/item/list'})
+
 }
 
 const auth = () => {

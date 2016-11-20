@@ -6,26 +6,33 @@ var sync = require('../../utils/sync')
 
 Page({
   data: {
-    motto: 'Hello World',
-    userInfo: {}
+    access:false,
+    welcome: '正在登录鲜时达...',
+    userInfo: {},
   },
   login(){
     app.getUserInfo().then(userInfo=>{
       this.setData({userInfo})
       return {userInfo, accessCode:app.globalData.accessCode}
     }).then(params=>{
-      //return app.loginXsd(params.accessCode, params.userInfo)
-      return xsd.client.login(params.accessCode, params.userInfo)
-    }).then(auth=>{
-      this.setData({
-        retry:true,
-        welcome:'登录成功'
+      const postData = {code: params.accessCode, userInfo:params.userInfo}
+      postData.code='station-test1' //测试用
+      return xsd.api.post('station/login', postData).then(data=>{
+        if(!!data.user){
+          this.setData({
+            welcome:'正在跳转...'
+          })
+          xsd.station.login(data.user)
+        }else{
+          this.setData({
+            access:true,
+            welcome:'无效用户'
+          })
+        }
       })
-      console.log('aaaaaaaaaaa')
-      wx.navigateTo({url:'../item/list'})
+
     }).catch(err=>{
       this.setData({
-        retry:true,
         welcome:err
       })
     })
