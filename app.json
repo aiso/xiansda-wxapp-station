@@ -4,7 +4,9 @@
     "pages/logs/logs",
 
     "pages/user/access",
-    "pages/item/list"
+    "pages/item/list",
+
+    "pages/agent/suppliers"
   ],
   "window":{
     "backgroundTextStyle":"light",

@@ -14,6 +14,9 @@ const _request = opts => {
 	  	//console.log(res)
 	  	if(res.statusCode==200)
 	  		resolve(res.data)
+	  	else if(res.statusCode==401){
+	  		wx.navigateTo({url:'/pages/index/index'})
+	  	}
 	  	else{
 	  		const msg = (!!res.data.error)?res.data.error.message:res.data
 		    wx.showModal({
@@ -48,7 +51,7 @@ const _request = opts => {
 }
 
 const _cache = []
-const get = (url, cache=true) => {
+const get = (url, cache=false) => {
 	if(!!_cache[url] && _cache[url].dirty !== true)
 		return Promise.resolve(_cache[url])
 	else

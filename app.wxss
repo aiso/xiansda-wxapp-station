@@ -1,44 +1,15 @@
+
 /**app.wxss**/
 
 .page{
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
-  line-height: 1.6;
   font-family: Microsoft Yahei, 'Roboto', sans-serif;
-}
-.page.with-toolbar-footer{
-  padding-bottom: 100rpx;
-}
-
-.page-header{
-  padding: 80rpx;
-  display: flex;
-  flex-direction:column;
-}
-
-.page-header-title{
-  margin-bottom: 24rpx;
-  text-align: left;
-  font-weight: 400;
-  font-size:40rpx;
-}
-
-.page-header-desc{
-  font-size:28rpx;
-  color:#888888;
-}
-
-
-.page-body{
-  margin:0 30rpx;
-}
-
-.pane{
-  margin: 30rpx;
+  line-height: 1.4;
 }
 
 .section{
-  margin:60rpx;
+  margin:30rpx;
 }
 
 .border-box{
@@ -217,6 +188,9 @@
   color:#b2b2b2;
 }
 
+.bg-white{
+  background: white;
+}
 .bg-soft{
   background: #f1f1f1;
 }

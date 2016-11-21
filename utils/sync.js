@@ -76,6 +76,18 @@ const setEntity = (name, data, expire=null) => {
 		entity.set(data, expire)
 	return entity
 }
+const initEntity = (name, loader, expire=null) => {
+	return new Promise((resolve, reject)=>{
+		const entity = getSync(name)
+		if(!!entity)
+			resolve(entity) 
+		else{
+			return loader().then(data=>{
+				resolve(setEntity(name, data, expire)) 
+			})
+		}
+	})
+}
 const getter = name => {
 	const entity = entities.find(e=>e.name == name)||setEntity(name,null)
 	return new SyncGetter(entity)
@@ -88,6 +100,7 @@ const getSync = name => {
 module.exports = {
 	trace,
 	setEntity,
+	initEntity,
 	getter,
 	getSync
 }
