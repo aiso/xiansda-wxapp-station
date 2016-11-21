@@ -1,4 +1,10 @@
 <!--list.wxml-->
 <view class="page">
-	list
+	<view class="page-header text-center">
+		<view class="mb20">
+			<icon type="info_circle" size="45"/>
+		</view>
+		<text>添加代理</text>	
+		
+	</view>
 </view>

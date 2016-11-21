@@ -5,7 +5,7 @@ const sync = require('../utils/sync')
 
 const login = (user) => {
 	sync.setEntity('auth', user)
-	wx.navigateTo({url:'/pages/item/list'})
+	wx.redirectTo({url:'/pages/item/list'})
 
 }
 

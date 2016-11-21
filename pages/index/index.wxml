@@ -8,6 +8,9 @@
     <view class="text-center mb20">
       <text class="text-h2 text-ls">{{welcome}}</text>
     </view>
+    <view class="section" wx:if="{{retry}}">
+    	<button bindtap="login">重试</button>
+    </view>
 	<view wx:if="{{access}}">
 	  <view class="mb40">
 	  	<text class="text-h3 text-ls">此小程序是作为鲜时达服务站的应用，不对普通消费者开放。如果您是服务站人员请使用接入码接入。</text>	
