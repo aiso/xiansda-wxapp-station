@@ -1,13 +1,15 @@
 'use strict';
 
+const Promise = require("../utils/bluebird.min")
 const base64 = require('../utils/base64')
+
 const API_PATH = 'http://localhost/xiansda/1/wxapp/'
 //const API_PATH = 'https://xiansda.sinaapp.com/wxapp/'
 const sync = require('../utils/sync')
 
 const _request = opts => {
-	console.log(opts)
   return new Promise((resolve, reject) => {
+
   	const options = Object.assign({
 	  method:'GET',
 	  success:res=>{
@@ -39,13 +41,14 @@ const _request = opts => {
 	  }
 	}, opts)
 
-  	const auth = sync.getSync('auth')
+  	const auth = sync.getEntityData('auth')
   	if(!!auth){
   		options.header = {
   			'Authorization': base64.encode(auth.id + ":" + auth.token)
   		}
   	}
 	options.url = API_PATH + options.url
+	console.log(options)
 	wx.request(options)
   })	
 }

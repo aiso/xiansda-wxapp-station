@@ -1,4 +1,6 @@
-var EventEmitter = require("events").EventEmitter;
+
+const Promise = require("bluebird.min")
+const EventEmitter = require("events").EventEmitter;
 
 function SyncEntity(name, loader){
 	this.name = name
@@ -113,10 +115,16 @@ const getter = (name, loader=null) => {
 	return new SyncGetter(entity)
 }
 
+const getEntityData = name => {
+	const entity = entities.find(e=>e.name == name)
+	return entity?entity.data:null
+}
+
 module.exports = {
 	trace,
 	initEntity,
 	setEntity,
 	getEntity,
+	getEntityData,
 	getter
 }

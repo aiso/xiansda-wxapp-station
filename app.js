@@ -1,4 +1,6 @@
 //app.js
+var Promise = require("./utils/bluebird.min")
+
 App({
   onLaunch: function () {
     //调用API从本地缓存中获取数据
