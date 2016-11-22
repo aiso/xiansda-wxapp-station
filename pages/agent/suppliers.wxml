@@ -1,11 +1,12 @@
 <!--suppliers.wxml-->
 <view class="page">
-  <view class="page-body">
-	  <view class="flex-row border-top mtb20" wx:for="{{suppliers}}" wx:key="id">
-	  	<image src="{{item.img}}" class="avatar" mode="aspectFill"></image>
-	  	<view class="flex-column plr20">
-		  <text class="list-item-title">{{item.name}}</text>
-	  	</view>
-	  </view>
+
+  <view class="pane flex-row border-bottom" wx:for="{{suppliers}}" wx:key="id">
+  	<image src="{{item.img}}" class="avatar small" mode="aspectFill"></image>
+  	<view class="flex-column plr20">
+	  <text class="text-h3 mb5">{{item.name}}</text>
+	  <text class="text-h4 c-gray">{{item.address}}</text>
+  	</view>
   </view>
+
 </view>

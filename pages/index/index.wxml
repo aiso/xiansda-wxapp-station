@@ -1,6 +1,6 @@
 <!--index.wxml-->
 <view class="page full-size flex-column">
-  <view class="page-header bg-soft userinfo">
+  <view class="pane-hero bg-soft userinfo">
     <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
     <text class="userinfo-nickname">{{userInfo.nickName}}</text>
   </view>

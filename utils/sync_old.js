@@ -1,9 +1,7 @@
 var EventEmitter = require("events").EventEmitter;
 
-function SyncEntity(name, loader){
+function SyncEntity(name){
 	this.name = name
-	this.loader = loader
-	this.events = []
 }
 SyncEntity.prototype = Object.create(EventEmitter.prototype);
 SyncEntity.prototype.set = function(data, expire){
@@ -11,7 +9,6 @@ SyncEntity.prototype.set = function(data, expire){
 	this.expire = expire
 	this.timestampe = (new Date()).getTime()
 	this.emit('update', data)
-	return this
 }
 SyncEntity.prototype.get = function(timestampe){
 	if(!!this.expire && ((new Date()).getTime() - this.timestampe > this.expire*1000)){
@@ -19,55 +16,9 @@ SyncEntity.prototype.get = function(timestampe){
 		this.timestampe = (new Date()).getTime()
 	}
 
-	if(!this.data && !!this.loader){
-		return this.loader().then(data=>{
-			this.set(data)
-			return data
-		})
-	}else{
-		return new Promise((resolve, reject)=>{
-			resolve((timestampe < this.timestampe && !!this.data)?this.data:null)
-		})
-	}
-}
-SyncEntity.prototype.getter = function(){
-	return new SyncGetter(this)
+	return (timestampe < this.timestampe && !!this.data)?this.data:null
 }
 
-
-const entities = []
-const trace = () => {
-	console.log(entities)
-}
-const initEntity = (name, loader, expire=null) => {
-	let entity = entities.find(e=>e.name == name)
-
-	if(!entity){
-		entity = new SyncEntity(name, loader, expire)
-		entities.push(entity)
-	}
-
-	return entity
-}
-const setEntity = (name, data, expire=null) => {
-	let entity = entities.find(e=>e.name==name)
-	if(!entity){
-		entity = new SyncEntity(name)
-		entities.push(entity)
-	}
-
-	if(!!data)
-		entity.set(data, expire)
-	return entity
-}
-const getEntity = name => {
-	return entities.find(e=>e.name == name)
-}
-
-
-/******************* 
- 	sync getter
-********************/
 function SyncGetter(entity){
 	this.entity = entity
 	this.timestampe = 0
@@ -77,10 +28,12 @@ SyncGetter.prototype.get = function(opts){
 	opts = Object.assign({force:false}, opts)
 
 	const timestampe = (opts.force===true)?0:this.timestampe
-	return this.entity.get(timestampe).then(data=>{
+	const that = this
+	return new Promise((resolve, reject)=>{
+		const data = that.entity.get(timestampe)
 		if(!!data){
-			this.timestampe = (new Date()).getTime()
-			return data
+			that.timestampe = (new Date()).getTime()
+			resolve(data)
 		}
 	})
 }
@@ -108,15 +61,46 @@ SyncGetter.prototype.checkUpdate = function(){
 	return this
 }
 
+const entities = []
+const trace = () => {
+	console.log(entities)
+}
+const setEntity = (name, data, expire=null) => {
+	let entity = entities.find(e=>e.name==name)
+	if(!entity){
+		entity = new SyncEntity(name)
+		entities.push(entity)
+	}
+
+	if(!!data)
+		entity.set(data, expire)
+	return entity
+}
+const initEntity = (name, loader, expire=null) => {
+	return new Promise((resolve, reject)=>{
+		const entity = getSync(name)
+		if(!!entity)
+			resolve(entity) 
+		else{
+			return loader().then(data=>{
+				resolve(setEntity(name, data, expire)) 
+			})
+		}
+	})
+}
 const getter = (name, loader=null) => {
 	const entity = entities.find(e=>e.name == name)||(!!loader)?initEntity(name, loader):setEntity(name,null)
 	return new SyncGetter(entity)
 }
+const getSync = name => {
+	const entity = entities.find(e=>e.name == name)
+	return entity?entity.data:null
+}
 
 module.exports = {
 	trace,
-	initEntity,
 	setEntity,
-	getEntity,
-	getter
+	initEntity,
+	getter,
+	getSync
 }
