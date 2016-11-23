@@ -206,6 +206,13 @@
   margin-left: auto;
   margin-right:auto;
 }
+.text-left{
+  text-align: left;
+}
+.text-right{
+  text-align: right;
+}
+
 .text-bold{
   font-weight: bold;
 }

@@ -8,6 +8,7 @@
     "pages/work/list",
 
     "pages/user/index",
+    "pages/user/login",
     "pages/user/access",
 
     "pages/agent/suppliers",
@@ -29,8 +30,8 @@
     "borderStyle": "white",
     "backgroundColor": "#ffffff",
     "list": [{
-      "pagePath": "pages/work/list",
-      "text": "工单",
+      "pagePath": "pages/index/index",
+      "text": "事务",
       "iconPath": "images/icons/home-outline.png",
       "selectedIconPath": "images/icons/home-outline_s.png"       
     }, {
