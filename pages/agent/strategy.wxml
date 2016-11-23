@@ -1,0 +1,15 @@
+<view class="page">
+  <view class="section">
+  	<text>销售价格：</text><text class="text-h1">￥{{prod.amount}}</text>
+  </view>
+  <view class="pane">
+  	<view class="input-field">
+	  <text class="label">代理费用</text>
+	  <input class="input" placeholder="0.00" />
+	  <icon type="warn" size="20"/>
+  	</view>
+  </view>
+  <view class="section">
+  	<button>保存</button>
+  </view>
+</view>

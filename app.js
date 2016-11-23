@@ -23,7 +23,7 @@ App({
     })
   },
   getUserInfo(){
-    console.log(this.globalData)
+    //console.log(this.globalData)
     if(!!this.globalData.userInfo) 
       return Promise.resolve(this.globalData.userInfo)
 
@@ -41,6 +41,7 @@ App({
     })
   },
   globalData:{
+    env:'dev',
     userInfo:null
   }
 })

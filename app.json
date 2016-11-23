@@ -10,7 +10,10 @@
     "pages/user/index",
     "pages/user/access",
 
-    "pages/agent/suppliers"
+    "pages/agent/suppliers",
+    "pages/agent/supplier",
+    "pages/agent/item",
+    "pages/agent/strategy"
   ],
   "window":{
     "backgroundTextStyle":"light",

@@ -10,6 +10,27 @@
   color:#333;
   letter-spacing: 1rpx;
 }
+.page.toolbar{
+  padding-bottom: 120rpx;
+}
+
+.page-toolbar{
+  position: fixed;
+  height: 120rpx;
+  bottom:0;
+  width: 100%;
+  box-sizing: border-box;
+}
+.page-toolbar .title{
+  line-height: 120rpx;
+}
+
+.page-image{
+  background: url(http://xiansda.sinaapp.com/public/img/bg/noimg.jpg) center center no-repeat;
+  background-color: #C9C9C9;
+  width:100%;
+  height: 150px;
+}
 
 .pane{
   padding:30rpx;
@@ -33,7 +54,9 @@
   margin:30rpx 0;
   border-top: 1px solid #e7e7e9;
 }
-
+.border.dashed{
+  border-top: 1px dashed #e7e7e9;
+}
 
 .section{
   margin:30rpx;
@@ -84,7 +107,19 @@
   border-bottom: 1rpx solid #e7e7e9;
 }
 
+.font-number{
+  font-family: Montserrat;
+}
+
+.single-line{
+    text-overflow:ellipsis;white-space:nowrap;overflow:hidden
+}
+
 .list-item{
+  display: flex;
+  flex-direction:row;
+  align-items:top;
+
   padding: 30rpx;
   background-color: #fff;
   overflow: hidden;
@@ -92,15 +127,17 @@
   cursor: pointer;
 }
 .list-item-thumbnail{
-  width:160rpx;
-  height:120rpx;
+  background-color: #eee;
+  width:120rpx;
+  height:90rpx;
 }
-.list-item-title{
-  font-size:26rpx;
-  text-overflow:ellipsis;white-space:nowrap;overflow:hidden
+.list-item-content{
+  padding-left:30rpx;
+  width:400rpx;
 }
-.list-item-desc{
-  font-size:20rpx;
+.list-item-content .single-line{
+  display: inline-block;
+  width:400rpx;
 }
 
 .input-field{
@@ -204,10 +241,10 @@
   font-size:28rpx;
 }
 .text-h4{
-  font-size:22rpx;
+  font-size:24rpx;
 }
 .text-h5{
-  font-size:18rpx;
+  font-size:20rpx;
 }
 
 .c-primary{
@@ -228,6 +265,10 @@
 .c-light{
   color:#b2b2b2;
 }
+.c-white{
+  color:white;
+}
+
 
 .bg-white{
   background: white;
@@ -235,21 +276,34 @@
 .bg-soft{
   background: #f1f1f1;
 }
+.bg-red{
+  background: #e64340;
+}
 
 .ib{
   display: inline-block;
 }
 
+.btn:active{
+  opacity: .5;
+}
+
 .avatar{
+  background-color: #eee;
+  background-image: url(http://xiansda.sinaapp.com/public/img/icon/user_original.jpg);
+  background-size:120rpx 120rpx;
+
   width: 120rpx;
   height: 120rpx;
   border-radius: 50%;
 }
 .avatar.small{
+  background-size:80rpx 80rpx;
   width: 80rpx;
   height: 80rpx;
 }
 .avatar.big{
+  background-size:160rpx 160rpx;
   width: 160rpx;
   height: 160rpx;
 }

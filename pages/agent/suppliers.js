@@ -1,18 +1,19 @@
 'use strict';
 const xsd = require('../../xsd/index')
-const supplierGetter = xsd.sync.suppliers.getter()
 
 Page({
   data:{
   	suppliers:[]
   },
-  onShow(){
-    supplierGetter.get().then(suppliers=>{
-      console.log(suppliers)
+  onLoad(){
+    xsd.sync.suppliers.get().then(suppliers=>{
       this.setData({
         suppliers
       })
     })
+  },
+  onShow(){
+    console.log('onShow');
   }
 
 })
