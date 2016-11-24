@@ -20,9 +20,13 @@
   bottom:0;
   width: 100%;
   box-sizing: border-box;
+  padding:0 20rpx;
 }
 .page-toolbar .title{
   line-height: 120rpx;
+}
+.page-toolbar .btn-icon{
+  padding:20rpx;
 }
 
 .page-image{
@@ -293,6 +297,11 @@
 
 .btn:active{
   opacity: .5;
+}
+
+.btn-icon{
+  width:40rpx;
+  height: 40rpx;
 }
 
 .avatar{

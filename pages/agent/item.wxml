@@ -8,13 +8,13 @@
 	  </block>
 	</swiper>
 	<view class="pane border-top">
-	  <view class="section flex-row">
-	  	<view class="flex-auto">
+	  <view class="flex-row">
+	  	<view class="p10 flex-auto">
 	  		<text>{{prod.title}}</text>
 	  	</view>
-	  	<view class="p20 flex-column text-center">
-	  		<text class="text-h1 text-bold c-red mb5">￥{{prod.price}}</text>
-	  		<text class="text-h4 c-light">供应价格</text>
+	  	<view class="p10 flex-column text-center">
+	  		<text class="text-h1 text-bold c-red mb5" wx:if="{{!!agent}}">￥{{amount}}</text>
+	  		<text class="text-h4 c-light">原价：{{prod.price}}</text>
 	  	</view>
 
 	  </view>
@@ -27,5 +27,17 @@
 	  <navigator url="strategy?id={{prod.id}}">
 		<text class="title text-h2 c-primary">我要代理</text>	
 	  </navigator>
+	</view>
+	<view class="page-toolbar flex-row border-top text-center" wx:if="{{!!agent}}">
+		<text class="title text-h3 c-gray">代理费：</text><text class="title text-h2 c-red text-bold">￥{{agent.fee}}</text>
+		<view class="flex-auto"></view>
+		<navigator url="strategy?id={{prod.id}}">
+			<view class="btn">
+				<image class="btn-icon" src="/images/icons/hammer.png"/>
+			</view>
+		</navigator>
+		<view class="btn" bindtap="deleteAgent">
+			<image class="btn-icon" src="/images/icons/cross.png"/>
+		</view>
 	</view>
 </view>

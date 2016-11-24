@@ -5,12 +5,12 @@
   <view class="pane border-top border-bottom">
     <view class="input-field">
       <text class="label">代理费用</text>
-      <input bindinput="inputChanged" class="input text-right" placeholder="输入格式如：5.30" />
+      <input bindinput="inputChanged" class="input text-right" placeholder="输入格式如：5.30" value="{{feeInput}}" />
       <text class="pl10">元</text>
     </view>
   </view>
 
   <view class="section">
-  	<button type="primary" disabled="{{disabled}}">确定</button>
+  	<button type="primary" disabled="{{disabled}}" bindtap="postAgent">确定</button>
   </view>
 </view>

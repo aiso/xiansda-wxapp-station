@@ -1,7 +1,7 @@
 <!--index.wxml-->
 <view class="page">
   <view class="pane">
-    <navigator url="/pages/agent/strategy?id=100001">strategy</navigator>  
+    <navigator url="/pages/agent/item?id=100001">strategy</navigator>  
   </view>
   
 </view>

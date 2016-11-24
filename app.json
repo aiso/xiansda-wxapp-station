@@ -3,14 +3,13 @@
     "pages/index/index",
     "pages/logs/logs",
 
-    "pages/item/list",
-
     "pages/work/list",
 
     "pages/user/index",
     "pages/user/login",
     "pages/user/access",
 
+    "pages/agent/list",
     "pages/agent/suppliers",
     "pages/agent/supplier",
     "pages/agent/item",
@@ -35,7 +34,7 @@
       "iconPath": "images/icons/home-outline.png",
       "selectedIconPath": "images/icons/home-outline_s.png"       
     }, {
-      "pagePath": "pages/item/list",
+      "pagePath": "pages/agent/list",
       "text": "代理",
       "iconPath": "images/icons/layers.png",
       "selectedIconPath": "images/icons/layers_s.png"          

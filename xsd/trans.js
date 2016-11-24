@@ -4,6 +4,13 @@
 const agentAmount = (price, quantity, agent) => {
 	const cost = price*quantity
 
+	const fee = agent.fee *  quantity
+	return {
+		cost:cost.toFixed(2),
+		fee:fee.toFixed(2),
+		amount:(cost + fee).toFixed(2)
+	}
+/*
 	let fee = 0
   	if(agent.strategy == 1)
     	fee = agent.fee *  quantity
@@ -24,6 +31,7 @@ const agentAmount = (price, quantity, agent) => {
 		max:fee==agent.fee_max,
 		min:fee==agent.fee_min
 	}
+*/
 } 
 
 module.exports = {
