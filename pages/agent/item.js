@@ -9,21 +9,39 @@ Page({
     interval: 5000,
     duration: 1000,
 
+    url:null,
   	prod:null,
   	agent:null,
     amount:0.00
   },
   onLoad(options){
-  	xsd.api.get('station/item/'+options.id, true).then(data=>{
+    this.setData({url:'station/item/'+options.id})
+    this.loadData()
+  },
+  onShow(){
+    xsd.api.isDirty(this.data.url) && this.loadData()
+  },
+  loadData(){
+    xsd.api.get(this.data.url, true).then(data=>{
       const amount = (!!data.agent)?parseFloat(data.agent.fee)+parseFloat(data.item.price):0.00
-  	  this.setData({
-  	  	prod:data.item,
-  	  	agent:data.agent,
+      this.setData({
+        prod:data.item,
+        agent:data.agent,
         amount
-  	  })
-  	})
+      })
+    })
   },
   deleteAgent(){
-  	//xsd.api.delete('station/agent')
+    wx.showModal({
+      title: '提示',
+      content: '你确定要取消代理？',
+      success: res => {
+        if(res.confirm){
+          xsd.api.delete('station/agent/'+this.data.agent.id).then(data=>{
+            wx.navigateBack()
+          })
+        }
+      }
+    })
   }
 })

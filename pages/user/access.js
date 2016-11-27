@@ -11,7 +11,7 @@ Page({
   	  const app = getApp()
   	  app.getUserInfo().then(userInfo=>{
   	  	const postData = {code:app.globalData.accessCode, userInfo, access:e.detail.value}
-  	  	postData.code='station-test1' //测试用
+  	  	!!getApp().globalData.debugUser && (postData.code = getApp().globalData.debugUser) //是否调试用户
   	  	xsd.api.post('station/access', postData).then(data=>{
   	  		xsd.station.login(data.user)
   	  	})

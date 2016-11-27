@@ -1,7 +1,6 @@
 <!--index.wxml-->
 <view class="page">
-  <view class="pane">
-    <navigator url="/pages/agent/item?id=100001">strategy</navigator>  
-  </view>
-  
+	<view class="section-hero text-center">
+		<text class="text-h1">无进行中交易...</text>
+	</view>
 </view>

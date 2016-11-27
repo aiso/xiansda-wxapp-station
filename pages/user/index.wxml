@@ -1,3 +1,15 @@
 <view class="page">
-
+  <view class="pane-hero text-center bg-soft flex-column">
+    <view class="mb10">
+      <image src="{{userInfo.avatarUrl}}" class="avatar" mode="aspectFill"></image>
+    </view>
+    <text class="text-h2 mb5">{{userInfo.nickName}}</text>
+    <text class="text-h4 c-gray">{{station.name}}</text>
+  </view>
+  <view class="pane border-bottom">
+    <navigator url="/pages/agent/item?id=100001">strategy</navigator>  
+  </view>
+  <view class="pane border-bottom" bindtap="test" data-sid="1000">
+    bindtap1
+  </view>
 </view>

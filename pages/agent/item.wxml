@@ -8,28 +8,39 @@
 	  </block>
 	</swiper>
 	<view class="pane border-top">
-	  <view class="flex-row">
-	  	<view class="p10 flex-auto">
-	  		<text>{{prod.title}}</text>
-	  	</view>
-	  	<view class="p10 flex-column text-center">
-	  		<text class="text-h1 text-bold c-red mb5" wx:if="{{!!agent}}">￥{{amount}}</text>
-	  		<text class="text-h4 c-light">原价：{{prod.price}}</text>
-	  	</view>
-
-	  </view>
-	  <view class="section">
-	  	<view class="border dashed"></view>
-	  	<text class="text-h3 c-gray">{{prod.content}}</text>
-	  </view>
+	<view class="flex-row">
+		<view class="flex-column text-center">
+			<image class="avatar small text-center" src="{{prod.supplier.img}}"></image>
+			<text class="text-h4 c-gray single-line" style="width:160rpx">{{prod.supplier.name}}</text>
+		</view>
+		<view class="flex-auto pl20">
+			<text class="mb10">{{prod.title}}</text>
+		</view>
 	</view>
-	<view class="page-toolbar border-top text-center" wx:if="{{!agent}}">
+  	<view class="border dashed"></view>
+  	<text class="text-h3 c-gray">{{prod.content}}</text>
+	<view class="page-toolbar flex-row border-top text-center" wx:if="{{!agent}}">
+	  	<view>
+	  		<text class="text-h2 text-bold c-gray">￥{{prod.price}}</text><text class="text-h4 c-light"> (原价)</text>
+	  	</view>
+	  	<view class="flex-auto"></view>
 	  <navigator url="strategy?id={{prod.id}}">
-		<text class="title text-h2 c-primary">我要代理</text>	
+	  	<button size="mini" type="primary">我要代理</button>
 	  </navigator>
 	</view>
 	<view class="page-toolbar flex-row border-top text-center" wx:if="{{!!agent}}">
-		<text class="title text-h3 c-gray">代理费：</text><text class="title text-h2 c-red text-bold">￥{{agent.fee}}</text>
+		<text class="text-bold c-gray" style="font-size:50rpx;padding:0 30rpx 0 10rpx;">￥</text>
+	  	<view class="flex-column">
+	  		<text class="text-h3 text-bold c-gray">{{prod.price}}</text><text class="text-h5 c-light">(原价)</text>
+	  	</view>
+	  	<text class="text-h2 text-bold c-gray plr10">+</text>
+	  	<view class="flex-column">
+	  		<text class="text-h3 text-bold c-gray">{{agent.fee}}</text><text class="text-h5 c-light">(代理费)</text>
+	  	</view>
+	  	<text class="text-h2 text-bold c-gray plr10">=</text>
+	  	<view class="flex-column">
+	  		<text class="text-h3 text-bold c-gray">{{amount}}</text><text class="text-h5 c-light">(售价)</text>
+	  	</view>
 		<view class="flex-auto"></view>
 		<navigator url="strategy?id={{prod.id}}">
 			<view class="btn">

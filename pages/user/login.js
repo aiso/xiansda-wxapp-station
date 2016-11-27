@@ -29,7 +29,7 @@ Page({
       return {userInfo, accessCode:app.globalData.accessCode}
     }).then(params=>{
       const postData = {code: params.accessCode, userInfo:params.userInfo}
-      postData.code='station-test1' //测试用
+      !!getApp().globalData.debugUser && (postData.code = getApp().globalData.debugUser) //是否调试用户
       return xsd.api.post('station/login', postData).then(data=>{
         if(!!data.user){
           this.setData({

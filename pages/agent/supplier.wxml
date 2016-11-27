@@ -12,9 +12,21 @@
   	  <view class="list-item-content flex-column">
   	  	<text class="text-h3 single-line">{{item.title}}</text>
   	  	<view>
-  	  		<text class="text-h4 c-gray">售价：</text><text class="text-h4 text-bold c-red">￥{{item.price}}</text>
+  	  		<text class="text-h4 c-gray">售价：</text><text class="text-h4 text-bold c-gray">￥{{item.price}}</text>
   	  	</view>
   	  </view>
+      <view wx:if="{{!item.agent}}" class="list-item-right middle text-center">
+        <image src="/images/icons/plus.png" class="btn-icon right-icon"></image>
+      </view>
+      <view wx:if="{{!!item.agent}}" class="flex-column text-center">
+        <text class="text-h3 text-bold c-red mb5">￥{{item.agent.fee}}</text>
+        <text class="text-h5 c-light">代理费</text>
+      </view>
   	</view>
   </navigator>
+  <view class="page-toolbar text-center border-top">
+    <view class="btn">
+      <image class="btn-icon" src='/images/icons/reload.png'></image>
+    </view>
+  </view>
 </view>

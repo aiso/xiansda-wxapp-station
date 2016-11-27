@@ -6,7 +6,7 @@ Page({
   data:{
     price:0.00,
     fee:0.00,
-    feeInput:0.00,
+    feeInput:'',
   	prod:null,
   	agent:null,
     disabled:true
@@ -14,11 +14,12 @@ Page({
   onLoad(options){
   	xsd.api.get('station/item/'+options.id, true).then(data=>{
   	  const fee = (!!data.agent)?parseFloat(data.agent.fee):0.00
+      const feeInput = (!!data.agent)?parseFloat(data.agent.fee):''
   	  this.setData({
   	  	prod:data.item,
   	  	agent:data.agent,
         price:parseFloat(data.item.price),
-        feeInput:fee,
+        feeInput,
         fee
   	  })
   	})

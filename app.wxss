@@ -11,19 +11,20 @@
   letter-spacing: 1rpx;
 }
 .page.toolbar{
-  padding-bottom: 120rpx;
+  padding-bottom: 100rpx;
 }
 
 .page-toolbar{
   position: fixed;
-  height: 120rpx;
+  height: 100rpx;
   bottom:0;
+  left:0;
   width: 100%;
   box-sizing: border-box;
   padding:0 20rpx;
 }
 .page-toolbar .title{
-  line-height: 120rpx;
+  line-height: 100rpx;
 }
 .page-toolbar .btn-icon{
   padding:20rpx;
@@ -64,6 +65,9 @@
 
 .section{
   margin:30rpx;
+}
+.section-hero{
+  margin: 60rpx;
 }
 
 .border-box{
@@ -124,7 +128,7 @@
   flex-direction:row;
   align-items:top;
 
-  padding: 30rpx;
+  padding: 30rpx 0 30rpx 30rpx;
   background-color: #fff;
   overflow: hidden;
   border-radius: 4rpx;
@@ -142,6 +146,16 @@
 .list-item-content .single-line{
   display: inline-block;
   width:400rpx;
+}
+.list-item-right{
+  width:200rpx;
+}
+.list-item-right.middle{
+  align-self:center;
+}
+
+.list-item .right-icon{
+  text-align: right;
 }
 
 .input-field{

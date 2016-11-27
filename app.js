@@ -42,6 +42,7 @@ App({
   },
   globalData:{
     env:'dev',
+    debugUser:'station-test2',
     userInfo:null
   }
 })

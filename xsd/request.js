@@ -17,7 +17,7 @@ const _request = opts => {
 	  	if(res.statusCode==200)
 	  		resolve(res.data)
 	  	else if(res.statusCode==401){
-	  		wx.navigateTo({url:'/pages/index/index'})
+	  		wx.navigateTo({url:'/pages/user/login'})
 	  	}
 	  	else{
 	  		const msg = (!!res.data.error)?res.data.error.message:res.data
@@ -67,10 +67,14 @@ const get = (url, cache=false) => {
 const dirty = url => {
 	if(!!_cache[url]) _cache[url].dirty = true
 }
-const post = (url, data) => _request({url, method:'POST', data})
+const isDirty = url => {
+	return (!!_cache[url])&&_cache[url].dirty===true
+}
 
 module.exports = {
   get,
   dirty,
-  post
+  isDirty,
+  post: (url, data) => _request({url, method:'POST', data}),
+  delete: url => _request({url, method:'DELETE'})
 }

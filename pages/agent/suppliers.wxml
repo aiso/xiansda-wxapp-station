@@ -4,9 +4,12 @@
   	<navigator url="supplier?id={{item.id}}">
 	  <view class="pane flex-row border-bottom">
 	  	<image src="{{item.img}}" class="avatar small" mode="aspectFill"></image>
-	  	<view class="flex-column plr20">
+	  	<view class="flex-column plr20 flex-auto">
 		  <text class="text-h3 mb5">{{item.name}}</text>
 		  <text class="text-h4 c-gray">{{item.address}}</text>
+	  	</view>
+	  	<view>
+	  		<image class="btn-icon" src="/images/icons/arrow-right.png"></image>
 	  	</view>
 	  </view>
   	</navigator>
