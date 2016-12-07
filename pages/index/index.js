@@ -8,7 +8,9 @@ var Promise = require("../../utils/bluebird.min")
 Page({
   data: {
   },
-  onLoad: function () {
-    xsd.station.auth()
-  }
+  onShow(){
+    if(!!xsd.auth.check()){
+
+    }
+  }, 
 })

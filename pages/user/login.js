@@ -3,7 +3,7 @@
 var app = getApp()
 var xsd = require("../../xsd/index")
 var sync = require('../../utils/sync')
-var Promise = require("../../utils/bluebird.min")
+
 
 Page({
   data: {
@@ -13,7 +13,6 @@ Page({
     userInfo: {},
   },
   onShow: function () {
-    console.log('onLoad')
     this.login()
   },
   login(){
@@ -25,17 +24,20 @@ Page({
     wx.showNavigationBarLoading()
 
     app.getUserInfo().then(userInfo=>{
-      this.setData({userInfo})
-      return {userInfo, accessCode:app.globalData.accessCode}
-    }).then(params=>{
-      const postData = {code: params.accessCode, userInfo:params.userInfo}
+      const postData = {code: app.globalData.accessCode, userInfo}
       !!getApp().globalData.debugUser && (postData.code = getApp().globalData.debugUser) //是否调试用户
       return xsd.api.post('station/login', postData).then(data=>{
         if(!!data.user){
           this.setData({
             welcome:'登录成功...'
           })
-          xsd.station.login(data.user)
+          data.user.wxinfo = userInfo
+          xsd.auth.store(data.user).then(()=>{
+            wx.showToast({title:'登录成功', icon:'success'})
+            setTimeout(function() {
+              wx.navigateBack()
+            }, 500)
+          })
         }else{
           this.setData({
             access:true,

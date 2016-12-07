@@ -1,14 +1,15 @@
 <!--list.wxml-->
 <view class="page">
-	<view class="pane" wx:if="{{agents.length==0}}">
-		<view class="section flex-row">
-			<text class="text-h1 flex-auto text-ls">产品代理</text>
-			<icon type="info_circle" size="32"/>		
+	<view wx:if="{{agents.length==0}}">
+		<view class="pane bg-soft">
+			<view class="flex-column text-center mb30">
+				<icon type="info_circle mb30" size="64"/>	
+				<text class="text-h1 text-ls">产品代理</text>
+			</view>
+			<view>
+				<text class="text-left text-h3 c-gray text-ls">我们平台为您提供了可靠，可追溯来源的产品。你可以从供应商中选择产品，并制定代理策略，发布到你的服务站点。所有关注此服务站的客户就能浏览到你发布的产品。</text>
+			</view>
 		</view>
-		<view class="section">
-			<text class="text-left text-h3 c-gray text-ls">我们平台为您提供了可靠，可追溯来源的产品。你可以从供应商中选择产品，并制定代理策略，发布到你的服务站点。所有关注此服务站的客户就能浏览到你发布的产品。</text>
-		</view>
-		
 		<view class="section">
 			<navigator url="../agent/suppliers">
 				<button type="primary">添加代理</button>	
@@ -30,7 +31,7 @@
 		  	</view>
 	  	</navigator>
 	  </view>
-	  <navigator url="item?id={{item.item.id}}" wx:for="{{agents}}" wx:key="id">
+	  <navigator url="../s{{item.item.service}}/item?id={{item.item.id}}" wx:for="{{agents}}" wx:key="id">
 	  	<view class="list-item border-bottom">
 	  	  <image class="list-item-thumbnail" src="{{item.item.img}}" mode="aspectFill"></image>
 	  	  <view class="list-item-content flex-column">

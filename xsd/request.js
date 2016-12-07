@@ -41,10 +41,11 @@ const _request = opts => {
 	  }
 	}, opts)
 
-  	const auth = sync.getEntityData('auth')
+  	//const auth = sync.getEntityData('auth')
+  	const auth = getApp().globalData.user
   	if(!!auth){
   		options.header = {
-  			'Authorization': base64.encode(auth.id + ":" + auth.token)
+  			'Authorization': base64.encode(auth.id + ":" + auth.access_token)
   		}
   	}
 	options.url = API_PATH + options.url

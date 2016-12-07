@@ -1,5 +1,6 @@
 //app.js
 var Promise = require("./utils/bluebird.min")
+var xsd = require("./xsd/index")
 
 App({
   onLaunch: function () {
@@ -7,6 +8,8 @@ App({
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
+
+    xsd.auth.load()
   },
   login(){
     if(!!this.globalData.accessCode) 

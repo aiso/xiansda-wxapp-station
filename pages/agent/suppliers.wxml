@@ -8,9 +8,6 @@
 		  <text class="text-h3 mb5">{{item.name}}</text>
 		  <text class="text-h4 c-gray">{{item.address}}</text>
 	  	</view>
-	  	<view>
-	  		<image class="btn-icon" src="/images/icons/arrow-right.png"></image>
-	  	</view>
 	  </view>
   	</navigator>
   </block>

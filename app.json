@@ -12,8 +12,10 @@
     "pages/agent/list",
     "pages/agent/suppliers",
     "pages/agent/supplier",
-    "pages/agent/item",
-    "pages/agent/strategy"
+
+    "pages/s101/item",
+    "pages/s101/strategy"
+
   ],
   "window":{
     "backgroundTextStyle":"light",

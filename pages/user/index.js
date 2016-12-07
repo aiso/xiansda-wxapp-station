@@ -7,9 +7,8 @@ Page({
   	station:null
   },
   onLoad(){
-  	const user = xsd.station.auth()
-  	const userInfo = getApp().globalData.userInfo
-  	this.setData({userInfo, station:user.profile})
+    const user = getApp().globalData.user
+    this.setData({userInfo:user.wxinfo, station:user.profile})
   },
   test(e){
   	console.log(e.target.dataset.sid)
